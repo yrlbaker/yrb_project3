@@ -3,10 +3,11 @@ from crypto import convertDataToJSON, pinJSONtoIPFS, initContract, w3
 
 from pprint import pprint
 
+# what do we change cryptofax to?
 cryptofax = initContract()
 
 
-def createAccidentReport():
+def create_token_request():
     time = input("Date of the accident: ")
     description = input("Description of the accident: ")
     token_id = int(input("Token ID: "))
@@ -17,19 +18,19 @@ def createAccidentReport():
     return token_id, report_uri
 
 
-def reportAccident(token_id, report_uri):
-    tx_hash = cryptofax.functions.reportAccident(token_id, report_uri).transact(
+def requestEduToken(token_id, report_uri):
+    tx_hash = cryptofax.functions.request_edu_Token(token_id, report_uri).transact(
         {"from": w3.eth.accounts[0]}
     )
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     return receipt
 
 
-def getAccidentReports(token_id):
-    accident_filter = cryptofax.events.Accident.createFilter(
+def get_token_request(token_id):
+    token_request_filter = cryptofax.events.token_request.createFilter(
         fromBlock="0x0", argument_filters={"token_id": token_id}
     )
-    return accident_filter.get_all_entries()
+    return token_request_filter.get_all_entries()
 
 
 # sys.argv is the list of arguments passed from the command line
@@ -41,9 +42,9 @@ def getAccidentReports(token_id):
 # python accident.py        get            1
 def main():
     if sys.argv[1] == "report":
-        token_id, report_uri = createAccidentReport()
+        token_id, report_uri = create_token_request()
 
-        receipt = reportAccident(token_id, report_uri)
+        receipt = request_edu_Token(token_id, report_uri)
 
         pprint(receipt)
         print("Report IPFS Hash:", report_uri)
@@ -52,7 +53,7 @@ def main():
         token_id = int(sys.argv[2])
 
         car = cryptofax.functions.cars(token_id).call()
-        reports = getAccidentReports(token_id)
+        reports = get_token_request(token_id)
 
         pprint(reports)
         print("VIN", car[0], "has been in", car[1], "accidents.")

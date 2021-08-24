@@ -26,7 +26,7 @@ contract EduToken is ERC20, ERC20Detailed, ERC20Mintable {
 
         // why isn't the body of the function below in Bilikisu's code?
         
-        mint(msg.sender, initialSupply)
+        mint(msg.sender, initialsupply);
 
         }
 

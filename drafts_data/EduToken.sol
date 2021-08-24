@@ -10,7 +10,7 @@ contract EduToken {
     string public symbol = "EDU";
     uint public exchange_rate = 1;
     
-    // Balances have set of unsigned integer values mapped by the data type address.
+    // Balances have set of unsigned integer values mapped by the address.
     mapping(address => uint) balances;
 
     //This is where you can see the balance of the account requested.

@@ -3,12 +3,11 @@ pragma solidity ^0.5.0;
 // The links below are taken from OpenZepplin. One of many links from the website,
 // this site is an open-source "testing ground" by community developers to test 
 // and create secure smart contracts.
-// 
+
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/token/ERC20/ERC20.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/token/ERC20/ERC20Detailed.sol";
 
-// Initialize the EduToken contract. Assign the value of the owner as the contract
-// is created. 
+// Initialize EduToken contract. EduToken inherits properties from ERC20, ERC20Detailed contracts.
 contract TheEduToken is ERC20, ERC20Detailed {
     address payable owner;
 
