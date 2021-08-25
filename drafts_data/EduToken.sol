@@ -3,12 +3,12 @@ pragma solidity ^0.5.0;
 import "github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/math/SafeMath.sol";
 // Using SafeMath by OpenZeppelin, to make secure and strong Solidity contracts, 
 // and also use for unsigned integers.
-// The public token symbol is EDU, the exchange rate is 1 wei.
+// The public token symbol is EDU, the exchange rate is 1 ETH for 100 wei.
 contract EduToken {
     using SafeMath for uint;
     address payable owner = msg.sender;
     string public symbol = "EDU";
-    uint public exchange_rate = 1;
+    uint public exchange_rate = 100;
     
     // Balances have set of unsigned integer values mapped by the address.
     mapping(address => uint) balances;

@@ -17,8 +17,8 @@ contract TheEduToken is ERC20, ERC20Detailed {
         require(msg.sender == owner, "You do not have permission to mint these tokens!");
         _;
     }
-    // Constructor function is called only once in the contract. It's initializing the 
-    // initial supply of the EduToken. 
+    // Constructor function is called only once in the contract. It initializes the supply of
+    // the EduToken. Value supplied to the constructor function: 123,456,789,012,345 EDU tokens.
     constructor(uint initial_supply) ERC20Detailed("TheEduToken", "EduToken", 18) public {
         owner = msg.sender;
         _mint(owner, initial_supply);
